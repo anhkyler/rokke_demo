@@ -119,14 +119,23 @@
     <section class="section areas" id="areas" aria-labelledby="areas-title">
       <div class="container areas-grid">
         <div class="areas-media reveal">
-          <img
-            src="https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=1000&q=80&auto=format&fit=crop"
-            alt="Garden-style multifamily apartment community at sunset"
-            width="1000" height="700" loading="lazy">
-          <div class="areas-badge">
-            <svg class="ic"><use href="#i-pin"/></svg>
-            <span>Headquartered in<br><strong>Columbia, SC</strong></span>
-          </div>
+          <figure class="area-gallery">
+            <div class="area-photo">
+              <img id="area-main" src="assets/areas/columbia-1.jpg" alt="Downtown Columbia skyline from Arsenal Hill" width="1200" height="800">
+              <div class="areas-badge">
+                <svg class="ic"><use href="#i-pin"/></svg>
+                <span>Now viewing<br><strong id="area-name">Columbia, SC</strong></span>
+              </div>
+            </div>
+            <figcaption>
+              <span id="area-caption">Downtown Columbia skyline from Arsenal Hill</span>
+              <small id="area-credit">Photo: <a href="https://commons.wikimedia.org/wiki/File:Fall_skyline_of_Columbia_SC_from_Arsenal_Hill.jpg" target="_blank" rel="noopener">Akhenaton06</a>, CC BY-SA 3.0</small>
+            </figcaption>
+            <div class="area-thumbs" id="area-thumbs">
+              <button type="button" class="area-thumb is-active" data-index="0" aria-label="Show photo 1: Downtown Columbia skyline from Arsenal Hill" aria-pressed="true"><img src="assets/areas/columbia-1.jpg" alt="" width="160" height="110" loading="lazy"></button>
+              <button type="button" class="area-thumb" data-index="1" aria-label="Show photo 2: South Carolina State House" aria-pressed="false"><img src="assets/areas/columbia-2.jpg" alt="" width="160" height="110" loading="lazy"></button>
+            </div>
+          </figure>
         </div>
 
         <div class="areas-copy">
@@ -135,22 +144,213 @@
             Local knowledge matters. We know the neighborhoods, rental demand and vendors across the
             region, and we're growing. Don't see your community? Reach out; we may already serve it.
           </p>
+          <p class="area-hint reveal">Select a community to see it.</p>
 
-          <!-- To add an area, copy one <li> line below. -->
+          <!-- To add an area: add a <li> below AND an entry with the same "name" in the area-photos list underneath. -->
           <ul class="area-list reveal">
-            <li class="is-primary">Columbia</li>
-            <li>Lexington</li>
-            <li>Irmo</li>
-            <li>West Columbia</li>
-            <li>Cayce</li>
-            <li>Forest Acres</li>
-            <li>Blythewood</li>
-            <li>Chapin</li>
-            <li>Elgin</li>
-            <li>Camden</li>
+            <li><button type="button" class="area-chip" data-area="Columbia" aria-pressed="true">Columbia</button></li>
+            <li><button type="button" class="area-chip" data-area="Lexington" aria-pressed="false">Lexington</button></li>
+            <li><button type="button" class="area-chip" data-area="Irmo" aria-pressed="false">Irmo</button></li>
+            <li><button type="button" class="area-chip" data-area="West Columbia" aria-pressed="false">West Columbia</button></li>
+            <li><button type="button" class="area-chip" data-area="Cayce" aria-pressed="false">Cayce</button></li>
+            <li><button type="button" class="area-chip" data-area="Forest Acres" aria-pressed="false">Forest Acres</button></li>
+            <li><button type="button" class="area-chip" data-area="Blythewood" aria-pressed="false">Blythewood</button></li>
+            <li><button type="button" class="area-chip" data-area="Chapin" aria-pressed="false">Chapin</button></li>
+            <li><button type="button" class="area-chip" data-area="Elgin" aria-pressed="false">Elgin</button></li>
+            <li><button type="button" class="area-chip" data-area="Camden" aria-pressed="false">Camden</button></li>
           </ul>
         </div>
       </div>
+
+      <!-- Photos for each community. Photos come from Wikimedia Commons and must keep their credit.
+           Replace "src" with your own photos (e.g. assets/areas/lexington-1.jpg) and set "credit" to "" for your own. -->
+      <script type="application/json" id="area-photos">
+[
+  {
+    "name": "Columbia",
+    "photos": [
+      {
+        "src": "assets/areas/columbia-1.jpg",
+        "caption": "Downtown Columbia skyline from Arsenal Hill",
+        "credit": "Akhenaton06",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Fall_skyline_of_Columbia_SC_from_Arsenal_Hill.jpg"
+      },
+      {
+        "src": "assets/areas/columbia-2.jpg",
+        "caption": "South Carolina State House",
+        "credit": "Florencebballer",
+        "license": "Public domain",
+        "source": "https://commons.wikimedia.org/wiki/File:SC_State_House_at_evening.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Lexington",
+    "photos": [
+      {
+        "src": "assets/areas/lexington-1.jpg",
+        "caption": "Lexington Square, downtown",
+        "credit": "Nicholemacgregor",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Lexington,_SC_Square.jpg"
+      },
+      {
+        "src": "assets/areas/lexington-2.jpg",
+        "caption": "Gibson Pond Park",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Gibson_Pond_--_Lexington,_SC.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Irmo",
+    "photos": [
+      {
+        "src": "assets/areas/irmo-1.jpg",
+        "caption": "Welcome to Irmo, home of the Okra Strut",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Irmo,_SC.png"
+      },
+      {
+        "src": "assets/areas/irmo-2.jpg",
+        "caption": "Irmo Town Park",
+        "credit": "Thomas Kirchel",
+        "license": "CC0",
+        "source": "https://commons.wikimedia.org/wiki/File:Irmo_Town_Park_Irmo,_SC.jpg"
+      }
+    ]
+  },
+  {
+    "name": "West Columbia",
+    "photos": [
+      {
+        "src": "assets/areas/west-columbia-1.jpg",
+        "caption": "State Street, West Columbia",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:West_Columbia,_SC.jpg"
+      },
+      {
+        "src": "assets/areas/west-columbia-2.jpg",
+        "caption": "Looking toward downtown Columbia from West Columbia",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:West_Columbia,_SC_overlooking_Columbia,_SC.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Cayce",
+    "photos": [
+      {
+        "src": "assets/areas/cayce-1.jpg",
+        "caption": "Knox Abbott Drive, Cayce",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Cayce,_SC_Knox_Abbot_Road.jpg"
+      },
+      {
+        "src": "assets/areas/cayce-2.jpg",
+        "caption": "The Columbia skyline from Cayce",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Columbia,_SC_from_Cayce,_SC.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Forest Acres",
+    "photos": [
+      {
+        "src": "assets/areas/forest-acres-1.jpg",
+        "caption": "City of Forest Acres",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Forrest_Acres,_SC_2.jpg"
+      },
+      {
+        "src": "assets/areas/forest-acres-2.jpg",
+        "caption": "Street view in Forest Acres",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Forrest_Acres,_SC.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Blythewood",
+    "photos": [
+      {
+        "src": "assets/areas/blythewood-1.jpg",
+        "caption": "Blythewood Town Hall",
+        "credit": "Eastward Gypsy",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:George_P._Hoffman_House,_aka_Blythewood_Town_Hall.jpg"
+      },
+      {
+        "src": "assets/areas/blythewood-2.jpg",
+        "caption": "Old Blythewood",
+        "credit": "Calistemon",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Old_Blythewood,_August_2023_01.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Chapin",
+    "photos": [
+      {
+        "src": "assets/areas/chapin-1.jpg",
+        "caption": "Downtown Chapin",
+        "credit": "Thomas Kirchel",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Downtown_Chapin,_SC.jpg"
+      },
+      {
+        "src": "assets/areas/chapin-2.jpg",
+        "caption": "Chapin Town Hall",
+        "credit": "Brian Stansberry",
+        "license": "CC BY 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Chapin-Town-Hall-sc.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Elgin",
+    "photos": [
+      {
+        "src": "assets/areas/elgin-1.jpg",
+        "caption": "White Pond, Elgin",
+        "credit": "Cryptohydrate",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:White_Pond,_Elgin_SC.jpg"
+      }
+    ]
+  },
+  {
+    "name": "Camden",
+    "photos": [
+      {
+        "src": "assets/areas/camden-1.jpg",
+        "caption": "Downtown Camden",
+        "credit": "Dr. Blazer",
+        "license": "CC BY-SA 4.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Downtown_Camden,_SC.jpg"
+      },
+      {
+        "src": "assets/areas/camden-2.jpg",
+        "caption": "Historic Kershaw County Courthouse",
+        "credit": "Pollinator",
+        "license": "CC BY-SA 3.0",
+        "source": "https://commons.wikimedia.org/wiki/File:Kershaw_courthouse_0077.jpg"
+      }
+    ]
+  }
+]
+      </script>
     </section>
 
     <!-- ===== CTA band ===== -->

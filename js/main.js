@@ -113,6 +113,66 @@
     });
   });
 
+  /* Service Areas: click a community to see its photos */
+  var areaData = document.getElementById("area-photos");
+  if (areaData) initAreas(JSON.parse(areaData.textContent));
+
+  function initAreas(areas) {
+    var main = document.getElementById("area-main");
+    var nameEl = document.getElementById("area-name");
+    var capEl = document.getElementById("area-caption");
+    var creditEl = document.getElementById("area-credit");
+    var thumbsEl = document.getElementById("area-thumbs");
+    var chips = document.querySelectorAll(".area-chip");
+    var current = areas[0];
+
+    function esc(t) { var d = document.createElement("div"); d.textContent = t; return d.innerHTML; }
+
+    function showPhoto(i) {
+      var p = current.photos[i];
+      main.classList.add("is-fading");
+      var img = new Image();
+      img.onload = img.onerror = function () {
+        main.src = p.src;
+        main.alt = p.caption;
+        main.classList.remove("is-fading");
+      };
+      img.src = p.src;
+      capEl.textContent = p.caption;
+      creditEl.innerHTML = p.credit
+        ? 'Photo: <a href="' + esc(p.source) + '" target="_blank" rel="noopener">' + esc(p.credit) + "</a>, " + esc(p.license)
+        : "";
+      thumbsEl.querySelectorAll(".area-thumb").forEach(function (b, n) {
+        b.classList.toggle("is-active", n === i);
+        b.setAttribute("aria-pressed", String(n === i));
+      });
+    }
+
+    function showArea(name) {
+      var a = areas.filter(function (x) { return x.name === name; })[0];
+      if (!a) return;
+      current = a;
+      nameEl.textContent = a.name + ", SC";
+      thumbsEl.innerHTML = a.photos.length > 1 ? a.photos.map(function (p, n) {
+        return '<button type="button" class="area-thumb" data-index="' + n + '" aria-label="Show photo ' + (n + 1) + ": " + esc(p.caption) +
+               '" aria-pressed="false"><img src="' + esc(p.src) + '" alt="" width="160" height="110"></button>';
+      }).join("") : "";
+      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c.dataset.area === name)); });
+      showPhoto(0);
+    }
+
+    chips.forEach(function (c) { c.addEventListener("click", function () { showArea(c.dataset.area); }); });
+    thumbsEl.addEventListener("click", function (e) {
+      var b = e.target.closest(".area-thumb");
+      if (b) showPhoto(Number(b.dataset.index));
+    });
+
+    /* Preload the other photos after the page settles */
+    window.addEventListener("load", function () {
+      areas.forEach(function (a) { a.photos.forEach(function (p) { new Image().src = p.src; }); });
+    });
+  }
+
   var y = document.getElementById("year");
   if (y) y.textContent = new Date().getFullYear();
 })();

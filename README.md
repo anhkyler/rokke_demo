@@ -46,7 +46,9 @@ Use find and replace across the project for each item.
 
 ## Common updates
 
-- **Add a service area:** copy a `<li>` in the list in `service-areas.html`, and add a matching `"City"` entry to `areaServed` in the JSON-LD in `index.html`.
+- **Add a service area:** in `service-areas.html`, copy one `<li>` in the area list *and* add an entry with the same `"name"` to the `area-photos` list just below it (put the photos in `assets/areas/`). Then add a matching `"City"` entry to `areaServed` in the JSON-LD in `index.html`.
+- **Replace town photos:** swap the files in `assets/areas/` (keep the names, or update `"src"`). For your own photos, set `"credit"` to `""` so no credit line shows.
+- **Photo credits:** the current town photos come from Wikimedia Commons under Creative Commons / public-domain licenses. They are free to use commercially **only while the credit line under each photo stays visible**. Don't remove it unless you replace the photo.
 - **Change colors:** edit `--brand`, `--accent`, `--charcoal` and the other values at the top of `css/styles.css`.
 - **Edit text:** each page's sections are labeled with comments such as `<!-- ===== About ===== -->`.
 
