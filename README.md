@@ -7,7 +7,7 @@ index.html          Home: hero, links to each page, call to action
 about.html          About Us: mission, vision, philosophy, how we work
 services.html       All 9 services, plus the property types we manage
 why-rokke.html      Why Choose R.O.K.K.E Management
-service-areas.html  Columbia and Midlands communities
+service-areas.html  Statewide coverage: 4 regions, 17 towns with photos
 contact.html        Contact details and the consultation form
 thank-you.html      Not used for now (kept for when a form backend is added)
 css/styles.css    All styling. Brand colors and fonts are at the top (:root)

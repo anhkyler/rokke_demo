@@ -161,7 +161,16 @@
       showPhoto(0);
     }
 
-    chips.forEach(function (c) { c.addEventListener("click", function () { showArea(c.dataset.area); }); });
+    chips.forEach(function (c) {
+      c.addEventListener("click", function () {
+        showArea(c.dataset.area);
+        /* On small screens the photo sits above the list: bring it into view */
+        var r = main.getBoundingClientRect();
+        if (r.top < 0 || r.bottom > window.innerHeight) {
+          main.closest(".area-gallery").scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+      });
+    });
     thumbsEl.addEventListener("click", function (e) {
       var b = e.target.closest(".area-thumb");
       if (b) showPhoto(Number(b.dataset.index));
