@@ -26,7 +26,6 @@ To preview, open `index.html` in a browser.
 
 | Placeholder | Where | Replace with |
 |---|---|---|
-| `(803) 555-0142` / `+18035550142` | All .html pages, js/main.js | Real business phone |
 | `info@rokkemanagement.com` | All .html pages (including the `<form>` tag in contact.html), js/main.js | Real business email |
 | `rokkemanagement.com` | All .html pages, robots.txt, sitemap.xml | Final domain |
 | `G-XXXXXXXXXX` | `<head>` of every page | Google Analytics 4 Measurement ID |

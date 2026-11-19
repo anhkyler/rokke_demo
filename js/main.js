@@ -94,7 +94,7 @@
     if (window.gtag) window.gtag("event", "generate_lead", { form: "consultation", method: "mailto" });
     window.location.href = href;
     setStatus("Your email app should now open with your request filled in. Please press Send to finish. " +
-              "If nothing opened, email " + to + " or call (803) 555-0142.", "success");
+              "If nothing opened, email " + to + " or call (843) 624-3433.", "success");
   });
 
   form.addEventListener("input", function (e) {
